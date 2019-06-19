@@ -1,0 +1,18 @@
+<html>
+<head>验证码-test</head>
+<div>
+    <img id="verify_img" src="{:captcha_src()}" alt="验证码" onclick="refreshVerify()">
+    <a href="javascript:refreshVerify()">点击刷新</a>
+</div>
+<form action="{:url('captcha/check')}" method="post">
+    <input type="text" name = "verify">
+    <input type="submit" value = "提交">
+</form>
+<script>
+    function refreshVerify() {
+        var ts = Date.parse(new Date())/1000;
+        var img = document.getElementById('verify_img');
+        img.src = "/captcha?id="+ts;
+    }
+</script>
+</html>
